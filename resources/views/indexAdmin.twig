@@ -1,0 +1,75 @@
+    {% extends 'layoutAdmin.twig' %}
+
+    {% block body %}
+    <body > 
+
+    
+
+    <div class="container-fluid">
+    <div class="row header-laliga text-center py-3 px-5">           
+    <img class="img-header" src="/images/laliga.png">
+    <h3 class="text-white my-auto" id="txt-header"> No es futbol. Es LaLiga</h3>
+    </div>
+    </div>
+    
+    
+    <div class="container">
+    <div class="row justify-content-center">
+    <div id="admin-name">
+    <img src="/images/admin.png">
+    </div>
+    
+    <div class="menu">
+    <table id="tabla-menu">
+    <tr>
+    <td class="caja">
+    <a href="/opciones">
+    <img class="img-menu" src="/images/opciones.png"> 
+    </a>
+    </td>
+    <td class="caja">
+    <a href="/equipos">
+    <img class="img-menu" src="/images/escudo.png"> 
+    </a>
+    </td>
+    </tr>
+    <tr>
+    <td class="caja">
+    <a href="/fechas">
+    <img class="img-menu" src="/images/versus.png"> 
+    </a>
+    </td>
+    <td class="caja">
+    <a href="/noticias">
+    <img class="img-menu" src="/images/noticias.png"> 
+    </a>
+    </td>
+
+    </tr>
+    </table>   
+
+            
+    </div>
+    </div>
+    </div>    
+
+    <!-- Modal -->
+    <div class="modal fade" id="modalOpciones" tabindex="-1" role="dialog" aria-labelledby="modal-op" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="modal-op">Opciones de Torneo</h5>
+
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+
+
+ 
+         </div>
+        </div>
+      </div>
+    </div> 
+    {% endblock %}

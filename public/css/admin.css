@@ -1,0 +1,183 @@
+.menu{
+    margin: 20px;
+    padding: 10px;
+    background-color: black;
+}
+
+.caja{
+    text-align: center;
+    padding: 10px;
+    cursor : pointer;
+}
+
+.caja span{
+    display:block;
+    font-size: 25px;
+}
+
+.img-menu{
+    height: 250px;
+    width: 250px;
+}
+
+@media (max-width: 480px){
+    .img-menu {
+       height: auto;
+       width: 100%;
+    }
+    #admin-name > img{
+      width: 100%;
+    }
+}
+
+.invalid-feedback {
+  display: none;
+}
+
+#tabla-menu{
+    background-color: black;
+    padding: 20px;
+}
+
+#admin-name{
+    margin-top: 20px;
+}
+
+tr:first-child{
+    background-color: rgba(0, 0, 0, 0);
+}
+
+@media (min-width: 576px) {
+  .modal-dialog {
+    max-width: 500px;
+    margin: 1.75rem auto;
+  }
+  .modal-dialog-centered {
+    min-height: calc(100% - (1.75rem * 2));
+  }
+  .modal-sm {
+    max-width: 350px;
+  }
+}
+
+#lista_jugadores tr:last-child{
+    color: white;
+}
+
+#boton-agr-jugador{
+   cursor: pointer;
+}
+
+#btnGenerarFixture{
+  text-align: center;
+  cursor: pointer;
+}
+
+#btnAgregarEquipo{
+  text-align: center;
+  cursor: pointer;
+}
+
+.posicion-dropdown{
+  width: 100px;
+}
+
+#lblEquipos{
+  text-align: center;
+}
+
+#boton_publicar_noticias{
+    color: white;
+    cursor: pointer;
+}
+
+.btnEliminarNoticia{
+
+  cursor: pointer;
+}
+
+#equipo-repetido{
+  color: red;
+}
+
+#equipo-agregado{
+  color: green;
+}
+
+#jugador-repetido{
+  color: red;
+}
+
+#jugador-agregado{
+  color: green;
+}
+
+#eliminar_jugador, #eliminar_noticia, #eliminar_equipo{
+  cursor: pointer;
+  color: red;
+}
+
+ #publicar_noticia{
+  cursor: pointer;
+  color: green;
+ }
+
+ #bajar_noticia{
+  cursor: pointer;
+ }
+
+.list-group-item {
+  font-size: 15px;
+  position: relative;
+  display: block;
+  padding: 0.25rem 0.75rem;
+  margin-bottom: -0.5px;
+  background-color: #fff;
+  border: 1px solid rgba(0, 0, 0, 0.125);
+}
+
+.escudo{
+  height: 23px;
+  width: 23px;
+}
+
+.tabla-equipos{
+  margin-right: 5px;
+}
+
+#eliminar_equipo:hover, #eliminar_jugador:hover, #eliminar_noticia:hover{
+  cursor: pointer;
+  color: #ff9999;
+  transform: scale(1.2, 1.2);
+}
+
+#tabla_equipos{
+  font-size: 15px;
+}
+
+.list-equipos{
+  cursor: pointer;
+}
+
+#tabla_usuarios{
+    width: 70%;
+    margin: 0px auto;
+    float: none;
+}
+
+.modal-footer{
+  padding-right: 16%;
+}
+
+#btn_escudo{
+  width: 215px;
+  margin-bottom: 0px;
+}
+
+[id^=input_editor]{
+    height: 25px;
+}
+
+div#lista-equipos div.active a{
+    color: white;
+}}
