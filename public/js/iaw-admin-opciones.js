@@ -124,7 +124,7 @@ function submitOpciones(){
     }
 }
 
-
+ //Chequea que una fecha sea correcta
  function checkDate() {
    var selectedText = $('#fecha_inicio').val();
    var selectedDate = new Date(selectedText);

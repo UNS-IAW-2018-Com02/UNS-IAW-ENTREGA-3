@@ -15,10 +15,9 @@ function abrirJornadas() {
 
 }
 
+//Muestra el calendario completo si es que ya fue generado
 function mostrarCalendarioCompleto(data) {
 
-
-  //var pxJornada = data[jornadaActual - 1];
   var pxJornada;
   $.get("/api/fechas", function(data, status) {
 
@@ -37,7 +36,7 @@ function mostrarCalendarioCompleto(data) {
  
 }
 
-
+//Cambia de jornada según el boton seleccionado
 function buscarJornada(event) {
 
 //Saco el número de la jornada que está mostrando cuando tocó el boton.
@@ -85,6 +84,7 @@ function obtenerJornada(nro) {
 
 }
 
+//Rellena la tabla con los partidos correspondientes de una jornada
 function mostrarJornadaEnTabla(partidos, numero){
 
 
@@ -124,6 +124,7 @@ function mostrarJornadaEnTabla(partidos, numero){
     $("#btn_jornada_anterior").css('visibility', 'hidden');
 }
 
+//Ordena los partidos por jornada
 function ordenarJornadas(data) {
 
   var jornadas = new Array();
@@ -150,14 +151,13 @@ function ordenarJornadas(data) {
   return j;
 }
 
+//Muestra los inputs necesarios para modificar una jornada
 function editarPartido(id, jornada, nroFila){
 
   $('#btn_editar_partido'+nroFila).css("color", "#00cc00");
 
   var col = $('#tabla_fixture tr:eq('+nroFila+')').attr("id", "tr_partido"+nroFila);
-
   var celda = $(col).children('td:nth-child(1)')[0];  
-
   var fecha = $(celda).html();
 
   $(celda).html($("<input></input>").attr("type", "text").attr("onfocus", "(this.type='date')").attr("onblur", "(this.type='text')").attr("id", "input_fecha"+nroFila).val(fecha));
@@ -165,7 +165,6 @@ function editarPartido(id, jornada, nroFila){
 
   var hora = $(celda).html();
   $(celda).html($("<input></input>").attr("type", "time").attr("id", "input_hora"+nroFila).val(hora));
-
 
   celda = $(col).children('td:nth-child(6)')[0];  
 
@@ -175,7 +174,6 @@ function editarPartido(id, jornada, nroFila){
   celda = $(col).children('td:nth-child(7)')[0];  
 
   var editor = $(celda).html();
-
   var select = $(celda).html($("<select></select>").attr("id", "input_editor"+nroFila).attr("name", "editor_fecha").attr("text", editor));
 
   $.get("/api/users", function(objeto, status) {
@@ -198,6 +196,7 @@ function editarPartido(id, jornada, nroFila){
 
 }
 
+//Chequea que una fecha sea correcta
  function checkDate(nroFila, fVieja) {
    var nuevaFecha = $('#input_fecha'+nroFila).val();
 
@@ -220,6 +219,7 @@ function editarPartido(id, jornada, nroFila){
 
  }
 
+ //Formatea una fecha
  function parsearFecha(fecha){
     const year = fecha.substring(6,10);
     let mes = fecha.substring(3,5);
@@ -228,6 +228,8 @@ function editarPartido(id, jornada, nroFila){
     return year+"-"+mes+"-"+dia;
  }
 
+
+//Elimina los inputs y agrega los valores correspondientes a cada campo
 function guardar_cambios_partido(id, jornada, nf, fechaVieja){
 
   var execute = true;
@@ -275,7 +277,7 @@ function guardar_cambios_partido(id, jornada, nf, fechaVieja){
   }
 
 
-
+  //Si la fecha es correcta, reemplazo los inputs y hago el post.
   if (checkDate(nf, fechaVieja)){
     if (execute === true){
       $('#input_fecha'+nf).replaceWith(f);
@@ -305,25 +307,9 @@ function guardar_cambios_partido(id, jornada, nf, fechaVieja){
   }
 }
 
-function confirmarAdmin(){
 
-  var us= $("#usuario").val();
-  var ps= $("#password").val();
-
-  if(us === "admin" && ps === "admin123")
-    $("#formlogin").attr("type", "hidden");
-  else{
-    $("#usuario").val = "";
-    $("#password").val = "";
-    $("#usuario").attr("placeholder", "Usuario");
-    $("#password").attr("placeholder", "Contraseña");
-  }
-
-}
-
-
+//Chequea que los equipos cuenten con los jugadores necesarios , genera el fixture y realiza el post de las fechas
 function genfix(){
-
 
   $.get("/api/configuracion", function(objeto, status) {
 
@@ -362,10 +348,11 @@ function genfix(){
             btnClass: 'btn-success',
             action:  function () {                          
 
+              toastr.warning("Espere unos segundos mientras se genera el fixture");
+
+              //Arma el fixture
               data = fix(objeto); 
               fixture = fixVuelta(data);
-
-              toastr.warning("Espere unos segundos mientras se genera el fixture");
 
               var i, j;
               var id = 0;
@@ -405,11 +392,9 @@ function genfix(){
 
     }); 
   });
-
-
-
 }
 
+//Borra los botones para eliminar equipos
 function bloquearEquipos(){
   $($("#lista-equipos")[0]).children('div').each(function () {
       var obj = $(this)[0];
@@ -418,6 +403,7 @@ function bloquearEquipos(){
   });
 }
 
+//Borra los botones para eliminar jugadores
 function bloquearJugadores(){
   $("#lista_jugadores tr:last-child").remove();
   $("#lista_jugadores tr:last-child").css("color", "#343a40");
@@ -428,6 +414,7 @@ function bloquearJugadores(){
   });
 }
 
+//Auxiliar para fixture
 function convertir(fixture){
 
   var i, j;
@@ -464,7 +451,6 @@ function convertir(fixture){
   return fix;
 }
 
-
 var fecha;
 
 function getFecha(){
@@ -473,6 +459,8 @@ function getFecha(){
     });
 }
 
+
+//Arma la segunda vuelta del fixture
 function fixVuelta(jornadas){
     var arreglo;
 
@@ -533,6 +521,7 @@ function fixVuelta(jornadas){
 
 }
 
+//Auxiliar fixture
 function vueltaJornada(jornadas){
   var arreglo = new Array();
 
@@ -546,6 +535,7 @@ function vueltaJornada(jornadas){
   return arreglo;
 }
 
+//Auxiliar fixture
 function fix(equipos){
 
   var n = equipos.length;
@@ -601,9 +591,7 @@ function fix(equipos){
 
   }
 
-
-
-
+  //Auxiliar fixture
   function intercambiar(par){
     return [par[1], par[0]];
   }

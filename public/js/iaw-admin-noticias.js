@@ -1,4 +1,4 @@
-    
+ //Carga las noticias y las muestra en la tabla    
   function cargarNoticias(){
 
    $.get("/api/noticias", function(data, status) {
@@ -42,7 +42,7 @@
 
  }
 
-
+ //Modifica el estado de la noticia segun corresponda
  function publicar_noticia(t, estado){
 
     $.post('/alta_baja_noticia', {
@@ -60,7 +60,7 @@
       })
 }
 
-
+//Elimina la noticia seleccionada
 function eliminarNoticia(t){
 
  $.confirm({
@@ -93,19 +93,15 @@ function eliminarNoticia(t){
 
 }
 
-
+//Borra de la lista la noticia eliminada
 function eliminarNoticiaLista(t){
 
   $('#tabla_noticias > tbody  > tr' ).each(function() {
     var d = ($(this).children('td:first').html());
-
-
-
     if (d === t){
       $(this).remove();
     }
   });
-
   
 
   if ($("#tabla_noticias tr").length === 1){
@@ -114,6 +110,7 @@ function eliminarNoticiaLista(t){
   }
 }
 
+//Actualiza el estado de una noticia modificada
 function actualizarNoticias(t, estado){
 
  $('#tabla_noticias > tbody  > tr' ).each(function() {

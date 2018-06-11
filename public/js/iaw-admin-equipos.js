@@ -168,7 +168,6 @@ function agregarEquipo(equipo){
 //Agrega un equipo a la lista
   function addTeam(equipo, i, fix){
     img = equipo.escudo;
-    console.log(img);
     var row = $("<span></span>").text(equipo.nombre_equipo).attr("id", equipo.nombre_equipo).append($("<img>").attr("src", img).attr("class", "escudo tabla-equipos").attr("align", "left"));
     if (!fix){
       var btnEliminar = $("<a></a>").attr("class", "oi oi-x float-right").attr("id", "eliminar_equipo").attr("onclick", "eliminarEquipo('"+ equipo.nombre_equipo +"')");
@@ -318,6 +317,7 @@ function mostrarJugadores(n) {
 }
 
 
+//Agrega un jugador a la tabla y un boton para agregar otro jugador
 function agregarJugador(data){
 
  $('#tabla_jugadores tr:last').remove();
@@ -336,7 +336,6 @@ function agregarJugador(data){
     });
          
 }
-
 
 
 
@@ -410,34 +409,7 @@ function calcularEdad(fecha){
   return edad;
 }
 
-/*
-function actModal(){
-
-  $.get("/api/configuraciones", function(objeto, status) {
-
-    var ISODate = new Date(objeto[0].fecha).toISOString();
-    const year = objeto[0].fecha.substring(0,4);
-    let mes = objeto[0].fecha.substring(5,7);
-    let dia = objeto[0].fecha.substring(8,10);
-
-
-    if (mes.length < 2) 
-      month = '0' + month;
-    if (dia.length < 2) 
-      day = '0' + day;
-
-    var f = dia + "/" + mes + "/" + year;
-
-    $("#cant_equipos").attr("placeholder", objeto[0].equipos).prop('autofocus');
-    $("#cant_jugadores").attr("placeholder", objeto[0].cant_jugadores);
-    $("#fecha_inicio").attr("placeholder", f);
-
-  });
-  
-}
-
-*/
-
+//Chequea si se llego al maximo de equipos de un torneo
 function chequearEquipos(){
 
   var cant, total;
